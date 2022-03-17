@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template, json
 
-from urllib.request import urlopen,Request,urlretrieve
+from urllib.request import urlopen,request,urlretrieve
 import datetime, os, webbrowser, csv, requests, urllib.request, random
 import sqlite3
 
@@ -15,7 +15,7 @@ def hello_world():
 @app.route('/gettemperature', methods=['POST'])
 def gettemperature():
     zipcode = request.form['zip']
-    r = requests.get('https://api.openweathermap.org/data/2.5/weather?zip='+zipcode+',us&appid=0bfdb889cbb648fab0ac52f70199760e')
+    r = requests .get('https://api.openweathermap.org/data/2.5/weather?zip='+zipcode+',us&appid=0bfdb889cbb648fab0ac52f70199760e')
     json_object = r.json()
     tempk= float(json_object["main"]["temp"])
     tempf = (tempk -273.15)*1.8+32
